@@ -119,11 +119,11 @@ if __name__ == "__main__":
 
     arg_parser = ArgumentParser()
     arg_parser.add_argument("--account", type=str, help="Twitter 帳號", default="")
-    arg_parser.add_argument("--query", type=str, help="內文活Hashtag", default="")
+    arg_parser.add_argument('-q',"--query", type=str, help="內文活Hashtag", default="")
     arg_parser.add_argument("--out_dir", type=str, help="存檔路徑", default='./parser')
     arg_parser.add_argument("--limit", type=int, help="爬文數量", default=0)
-    arg_parser.add_argument("--photo", type=bool, help="是否下載圖片", default=True)
-    arg_parser.add_argument("--video", type=bool, help="是否下載影片", default=True)
+    arg_parser.add_argument('-p',"--photo", help="是否下載圖片", action='store_true')
+    arg_parser.add_argument('-v',"--video", help="是否下載影片", action='store_true')
     args = arg_parser.parse_args()
     print(args)
 
