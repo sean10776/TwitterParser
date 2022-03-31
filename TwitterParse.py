@@ -1,4 +1,4 @@
-import os, sys, wget, json
+import wget, json
 import tweepy as tw
 from pathlib import Path
 
@@ -118,14 +118,13 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     arg_parser = ArgumentParser()
-    arg_parser.add_argument("--account", type=str, help="Twitter 帳號", default="")
+    arg_parser.add_argument('-a',"--account", type=str, help="Twitter 帳號", default="")
     arg_parser.add_argument('-q',"--query", type=str, help="內文活Hashtag", default="")
-    arg_parser.add_argument("--out_dir", type=str, help="存檔路徑", default='./parser')
-    arg_parser.add_argument("--limit", type=int, help="爬文數量", default=0)
+    arg_parser.add_argument('-od',"--out_dir", type=str, help="存檔路徑 預設執行檔資料夾建立\"parser\"", default='./parser')
+    arg_parser.add_argument('-l',"--limit", type=int, help="爬文數量 預設0: 搜尋到api上限或沒有貼文", default=0)
     arg_parser.add_argument('-p',"--photo", help="是否下載圖片", action='store_true')
     arg_parser.add_argument('-v',"--video", help="是否下載影片", action='store_true')
     args = arg_parser.parse_args()
-    print(args)
 
     parser = TweetParse()
     parser.parser(args.account, args.query, args.out_dir, args.limit, args.photo, args.video)
